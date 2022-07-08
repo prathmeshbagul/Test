@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Test
+﻿namespace Test
 {
     public class Employee
     {
@@ -19,16 +13,16 @@ namespace Test
             Age = age;
         }
 
-       
+
         public string ElderEmployee(int tempAge)
         {
 
 
-            return " ";         
+            return " ";
         }
-       public string GiveDetail(string tempName)
+        public string GiveDetail(string tempName)
         {
-          
+
 
             return " ";
         }
