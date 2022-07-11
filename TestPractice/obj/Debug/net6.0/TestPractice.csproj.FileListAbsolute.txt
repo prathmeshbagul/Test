@@ -1,0 +1,15 @@
+D:\CSharpFiles\TestPractice\bin\Debug\net6.0\TestPractice.exe
+D:\CSharpFiles\TestPractice\bin\Debug\net6.0\TestPractice.deps.json
+D:\CSharpFiles\TestPractice\bin\Debug\net6.0\TestPractice.runtimeconfig.json
+D:\CSharpFiles\TestPractice\bin\Debug\net6.0\TestPractice.dll
+D:\CSharpFiles\TestPractice\bin\Debug\net6.0\TestPractice.pdb
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.csproj.AssemblyReference.cache
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.GeneratedMSBuildEditorConfig.editorconfig
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.AssemblyInfoInputs.cache
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.AssemblyInfo.cs
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.csproj.CoreCompileInputs.cache
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.dll
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\refint\TestPractice.dll
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.pdb
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\TestPractice.genruntimeconfig.cache
+D:\CSharpFiles\TestPractice\obj\Debug\net6.0\ref\TestPractice.dll
