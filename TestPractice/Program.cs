@@ -1,51 +1,101 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace TestPractice
 {
+
+    public static class ExtensionMethod
+    {
+        public static int MaxAge(this List<Employee> allemployee)
+        {
+
+            int max_age = 0;
+            foreach (Employee emp in allemployee)
+            {
+
+                if (emp.Age > max_age)
+                {
+                    max_age = emp.Age;
+                }
+
+
+            }
+            return max_age;
+        }
+
+        public static double ProfitPercentage(this double Cost, int Sell)
+        {
+            double profit = ((Sell - Cost) * 100) / Cost;
+            return profit;
+
+        }
+    }
     public class Program
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Enter the Cost price");
+            double Cost = Convert.ToDouble(Console.ReadLine());
+
+
+
+
+            Console.WriteLine("Enter the Sell price");
+
+            int Sell = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine(Cost.ProfitPercentage(Sell));
+            Console.WriteLine();
 
             List<Employee> allemployee = GetEmployeeDetails();
-
+            Console.WriteLine(allemployee.MaxAge());
             foreach (Employee employee in allemployee)
             {
                 Console.WriteLine(employee.Name);
             }
 
+
+            Console.WriteLine(allemployee.MaxAge());
             Console.WriteLine();
             Console.WriteLine();
 
-          
-                Console.WriteLine();
-                Console.WriteLine("Enter the Age");
-                int tempAge = Convert.ToInt32(Console.ReadLine());
-                List<Employee> ListofElderAgeEmployee = ElderEmployee(allemployee, tempAge);
-                foreach (Employee employee in ListofElderAgeEmployee)
+            Console.WriteLine();
+            Console.WriteLine("Enter the Age");
+            int tempAge = Convert.ToInt32(Console.ReadLine());
+            List<Employee> ListofElderAgeEmployee = ElderEmployee(allemployee, tempAge);
+            foreach (Employee employee in ListofElderAgeEmployee)
+            {
+                Console.WriteLine(employee.Name + " " + employee.Id);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+
+
+            Console.WriteLine("Enter the Name");
+            string tempName = Console.ReadLine();
+            List<Employee> ListOfEmployeeWithGivenName = GiveDetail(allemployee, tempName);
+            foreach (Employee employee in ListOfEmployeeWithGivenName)
+            {
+
+                Console.WriteLine(employee);
+
+            }
+
+            Console.WriteLine("Do you want to arrange the employee names in alphabetical order");
+            char ch = Convert.ToChar(Console.ReadLine());
+
+            if (ch == 'Y')
+            {
+                List<Employee> AlphabeticEmployee = alphabeticallyorderednames(allemployee);
+
+                foreach (Employee employee in AlphabeticEmployee)
                 {
-                    if (employee.Age > tempAge)
-                        Console.WriteLine(employee.Name + " " + employee.Id);
+                    Console.WriteLine(employee);
                 }
-            
-            Console.WriteLine();
-            Console.WriteLine();
-            
-
-           
-
-                Console.WriteLine("Enter the Name");
-                string tempName = Console.ReadLine();
-                List<Employee> ListOfEmployeeWithGivenName = GiveDetail(allemployee, tempName);
-                foreach (Employee employee in ListOfEmployeeWithGivenName)
-                {
-                    
-                        Console.WriteLine(employee);
-                    
-                }
-
-            
-
+            }
         }
 
         public static List<Employee> GetEmployeeDetails()
@@ -101,6 +151,12 @@ namespace TestPractice
             return EmployeeWithGivenName;
         }
 
+        public static List<Employee> alphabeticallyorderednames(List<Employee> allemployee)
+        {
+            List<Employee> OrderedByNames = allemployee.OrderBy(employee => employee.Name).ToList();
+
+            return OrderedByNames;
+        }
     }
 }
 
@@ -152,3 +208,6 @@ namespace TestPractice
 
 //Console.WriteLine(Emp1.Salary(15));
 //Console.WriteLine(Emp1.Remark(0));
+
+
+
