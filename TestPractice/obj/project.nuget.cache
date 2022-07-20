@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T7Hp8rsYb4y7tmfdwU4y1pPJ0UJpPQeRjCEopvSkKom+qetUfNHTCVl1iV3jwKCHrTl7eh23XReOr32ZXFTtew==",
+  "dgSpecHash": "9FmeRQfPBoKkNiWG/q2IHYxvsbQzHMU9obvfR4i6C70ern1ZZG7JzvJMH1lwlbpeoi+5s4jDv92Lo3Mk26xJjQ==",
   "success": true,
-  "projectFilePath": "D:\\Test\\Test\\TestPractice\\TestPractice.csproj",
+  "projectFilePath": "D:\\GitlabHome\\homework\\TestPractice\\TestPractice.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Test\\Test\\TestPractice\\TestPractice.csproj",
+      "projectUniqueName": "D:\\GitlabHome\\homework\\TestPractice\\TestPractice.csproj",
       "projectName": "TestPractice",
-      "projectPath": "D:\\Test\\Test\\TestPractice\\TestPractice.csproj",
+      "projectPath": "D:\\GitlabHome\\homework\\TestPractice\\TestPractice.csproj",
       "packagesPath": "C:\\Users\\bagu_pra\\.nuget\\packages\\",
-      "outputPath": "D:\\Test\\Test\\TestPractice\\obj\\",
+      "outputPath": "D:\\GitlabHome\\homework\\TestPractice\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

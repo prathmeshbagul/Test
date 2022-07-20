@@ -1,4 +1,5 @@
-﻿namespace TestPractice
+﻿using TestPractice.EnumClass;
+namespace TestPractice
 {
     public class Employee
     {
@@ -6,20 +7,23 @@
         public int Id { get; }
         public int Age { get; }
 
-        public Employee(string name, int id, int age)
+        public Gender Gender { get; }
+
+        public Employee(string name, int id, int age, Gender gender)
         {
             Name = name;
             Id = id;
             Age = age;
+            Gender = gender;
         }
 
 
-        
 
 
 
-        public override string ToString() 
-        { return "Name = " +Name+" Id = " +Id+ " Age = " +Age ; }
+
+        public override string ToString()
+        { return "Name = " + Name + " Id = " + Id + " Age = " + Age+ " Gender = " + Gender; }
 
 
 

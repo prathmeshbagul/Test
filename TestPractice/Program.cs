@@ -1,65 +1,39 @@
 ﻿using System;
 using System.Collections;
+using TestPractice.EnumClass;
+
 
 namespace TestPractice
 {
 
-    public static class ExtensionMethod
-    {
-        public static int MaxAge(this List<Employee> allemployee)
-        {
 
-            int max_age = 0;
-            foreach (Employee emp in allemployee)
-            {
-
-                if (emp.Age > max_age)
-                {
-                    max_age = emp.Age;
-                }
-
-
-            }
-            return max_age;
-        }
-
-        public static double ProfitPercentage(this double Cost, int Sell)
-        {
-            double profit = ((Sell - Cost) * 100) / Cost;
-            return profit;
-
-        }
-    }
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter the Cost price");
-            double Cost = Convert.ToDouble(Console.ReadLine());
-
-
-
-
-            Console.WriteLine("Enter the Sell price");
-
-            int Sell = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine(Cost.ProfitPercentage(Sell));
-            Console.WriteLine();
-
+            
             List<Employee> allemployee = GetEmployeeDetails();
-            Console.WriteLine(allemployee.MaxAge());
+            
             foreach (Employee employee in allemployee)
             {
+
                 Console.WriteLine(employee.Name);
+           
             }
 
 
-            Console.WriteLine(allemployee.MaxAge());
+
             Console.WriteLine();
             Console.WriteLine();
 
+            Console.WriteLine("Max Age is : " + allemployee.MaxAge());
+
             Console.WriteLine();
+            Console.WriteLine();
+
+
+
+
             Console.WriteLine("Enter the Age");
             int tempAge = Convert.ToInt32(Console.ReadLine());
             List<Employee> ListofElderAgeEmployee = ElderEmployee(allemployee, tempAge);
@@ -68,10 +42,9 @@ namespace TestPractice
                 Console.WriteLine(employee.Name + " " + employee.Id);
             }
 
+
             Console.WriteLine();
             Console.WriteLine();
-
-
 
 
             Console.WriteLine("Enter the Name");
@@ -84,7 +57,11 @@ namespace TestPractice
 
             }
 
-            Console.WriteLine("Do you want to arrange the employee names in alphabetical order");
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Do you want to arrange the employee names in alphabetical order (press Y if yes)");
             char ch = Convert.ToChar(Console.ReadLine());
 
             if (ch == 'Y')
@@ -96,7 +73,17 @@ namespace TestPractice
                     Console.WriteLine(employee);
                 }
             }
+
+
+            Console.WriteLine("EvaluationDetail");
+            Console.WriteLine();
+            EvaluationDetails evaluationDetails = new EvaluationDetails(allemployee);
+           Console.WriteLine( evaluationDetails.EmployeeAvailabilityPercentage());
         }
+
+
+
+
 
         public static List<Employee> GetEmployeeDetails()
         {
@@ -112,7 +99,23 @@ namespace TestPractice
                 int Id = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter the age");
                 int Age = Convert.ToInt32(Console.ReadLine());
-                EmployeeDetailist.Add(new Employee(Name, Id, Age));
+                Gender gender = new Gender();
+                while (gender != Gender.Female && gender != Gender.Male)
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter Employee Gender:Female / Male");
+                        string genderType = Console.ReadLine();
+
+                        gender = (Gender)Enum.Parse(typeof(Gender), genderType);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Enter the gender either Male or Female ");
+                        continue;
+                    }
+                }
+                EmployeeDetailist.Add(new Employee(Name, Id, Age, gender));
                 Console.WriteLine("If you want to add more employee details press Y if not press N");
                 choice = Convert.ToChar(Console.ReadLine());
                 if (choice != 'Y' && choice != 'N')
@@ -121,6 +124,8 @@ namespace TestPractice
 
             return EmployeeDetailist;
         }
+
+
 
         public static List<Employee> ElderEmployee(List<Employee> allemployee, int tempAge)
         {
@@ -137,6 +142,9 @@ namespace TestPractice
 
             return EmployeesWithHigherAge;
         }
+
+
+
         public static List<Employee> GiveDetail(List<Employee> allemployee, string tempName)
         {
             List<Employee> EmployeeWithGivenName = new List<Employee>();
@@ -150,6 +158,9 @@ namespace TestPractice
 
             return EmployeeWithGivenName;
         }
+
+
+
 
         public static List<Employee> alphabeticallyorderednames(List<Employee> allemployee)
         {
@@ -208,6 +219,5 @@ namespace TestPractice
 
 //Console.WriteLine(Emp1.Salary(15));
 //Console.WriteLine(Emp1.Remark(0));
-
 
 
