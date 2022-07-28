@@ -4,43 +4,39 @@ namespace TestPractice
     public class Employee
     {
         public string Name { get; }
-        public int Id { get; }
+        public Guid Id { get; }
         public int Age { get; }
 
+        public Department Department { get; }
         public Gender Gender { get; }
 
-        public Employee(string name, int id, int age, Gender gender)
+        public int maxAge
+
+        {
+            get
+            {
+               
+                return 1;
+
+            }
+        }
+        public Employee(string name, int age, Gender gender, Department department)
         {
             Name = name;
-            Id = id;
+            
             Age = age;
             Gender = gender;
+            Department = department;
+        }
+
+        public override string ToString()
+        {
+            return   "Name = " + Name + " Id = " + Id + " Age = " + Age + " Gender = " + Gender + " Department = "+Department;
         }
 
 
-
-
-
-
-        public override string ToString()
-        { return "Name = " + Name + " Id = " + Id + " Age = " + Age+ " Gender = " + Gender; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //public string override ToString()
+        //{ return Employee.ToString; }
 
 
         //public int Salary(int month)

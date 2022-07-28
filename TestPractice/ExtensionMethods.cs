@@ -13,8 +13,6 @@
                 {
                     max_age = emp.Age;
                 }
-
-
             }
             return max_age;
         }

@@ -12,7 +12,7 @@ namespace TestPractice
 
         public int TotalEmployee
         {
-            get { return allemployee.Count; }
+            get { return totalEmployee; }
         }
 
         private double femaleEmployeePercentage;
@@ -20,9 +20,9 @@ namespace TestPractice
         {
             get
             {
-                int FemaleEmployee = allemployee.Where(emp => emp.Gender == Gender.Female).Count();
+                //int FemaleEmployee = allemployee.Where(emp => emp.Gender == Gender.Female).Count();
 
-                femaleEmployeePercentage = FemaleEmployee.Percentage(TotalEmployee);
+                //femaleEmployeePercentage = FemaleEmployee.Percentage(TotalEmployee);
 
                 return femaleEmployeePercentage;
 
@@ -35,9 +35,9 @@ namespace TestPractice
         {
             get
             {
-                int MaleEmployee = allemployee.Where(emp => emp.Gender == Gender.Male).Count();
+                //int MaleEmployee = allemployee.Where(emp => emp.Gender == Gender.Male).Count();
 
-                maleEmployeePercentage = MaleEmployee.Percentage(TotalEmployee);
+                //maleEmployeePercentage = MaleEmployee.Percentage(TotalEmployee);
 
                 return maleEmployeePercentage;
             }
@@ -48,6 +48,10 @@ namespace TestPractice
 
         {
             this.allemployee = allemployee;
+            totalEmployee = allemployee.Count;
+            maleEmployeePercentage= ((allemployee.Where(emp => emp.Gender == Gender.Male).Count()).Percentage(allemployee.Count));
+            femaleEmployeePercentage= ((allemployee.Where(emp => emp.Gender == Gender.Female).Count()).Percentage(allemployee.Count));
+
         }
 
 

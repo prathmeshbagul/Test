@@ -1,38 +1,13 @@
-﻿using System;
-using System.Collections;
-using TestPractice.EnumClass;
-
-
+﻿using TestPractice.EnumClass;
 namespace TestPractice
 {
-
 
     public class Program
     {
         public static void Main(string[] args)
         {
-            
-            List<Employee> allemployee = GetEmployeeDetails();
-            
-            foreach (Employee employee in allemployee)
-            {
-
-                Console.WriteLine(employee.Name);
            
-            }
-
-
-
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine("Max Age is : " + allemployee.MaxAge());
-
-            Console.WriteLine();
-            Console.WriteLine();
-
-
-
+            List<Employee> allemployee = GetEmployeeDetails(); 
 
             Console.WriteLine("Enter the Age");
             int tempAge = Convert.ToInt32(Console.ReadLine());
@@ -43,9 +18,9 @@ namespace TestPractice
             }
 
 
+           
             Console.WriteLine();
-            Console.WriteLine();
-
+       
 
             Console.WriteLine("Enter the Name");
             string tempName = Console.ReadLine();
@@ -56,9 +31,10 @@ namespace TestPractice
                 Console.WriteLine(employee);
 
             }
-
-
             Console.WriteLine();
+
+            Console.WriteLine("Max Age is : " + allemployee.MaxAge());
+
             Console.WriteLine();
 
             Console.WriteLine("Do you want to arrange the employee names in alphabetical order (press Y if yes)");
@@ -73,12 +49,20 @@ namespace TestPractice
                     Console.WriteLine(employee);
                 }
             }
+            Console.WriteLine();
 
-
+            Console.WriteLine("Name Of Employee Acc. to Department");
+            Dictionary<Department, List<string>> DepartmentWiseEmployeeNames = EmployeeNameWithDepartment(allemployee);
+            foreach (KeyValuePair<Department, List<string>> entry in DepartmentWiseEmployeeNames)
+            {
+                foreach (string names in entry.Value)
+                    Console.WriteLine(entry.Key + " : " + names);
+            }
+            Console.WriteLine();
             Console.WriteLine("EvaluationDetail");
             Console.WriteLine();
             EvaluationDetails evaluationDetails = new EvaluationDetails(allemployee);
-           Console.WriteLine( evaluationDetails.EmployeeAvailabilityPercentage());
+            Console.WriteLine(evaluationDetails.EmployeeAvailabilityPercentage());
         }
 
 
@@ -95,11 +79,13 @@ namespace TestPractice
                 Console.WriteLine("Enter the details");
                 Console.WriteLine("Enter the name");
                 string Name = Console.ReadLine();
-                Console.WriteLine("Enter the Id");
-                int Id = Convert.ToInt32(Console.ReadLine());
+                //Console.WriteLine("Enter the Id");
+                //var Id = Guid.NewGuid();
                 Console.WriteLine("Enter the age");
                 int Age = Convert.ToInt32(Console.ReadLine());
+
                 Gender gender = new Gender();
+
                 while (gender != Gender.Female && gender != Gender.Male)
                 {
                     try
@@ -111,17 +97,34 @@ namespace TestPractice
                     }
                     catch
                     {
-                        Console.WriteLine("Enter the gender either Male or Female ");
+                        Console.WriteLine("Gender can be entered as Male and Female only");
                         continue;
                     }
                 }
-                EmployeeDetailist.Add(new Employee(Name, Id, Age, gender));
-                Console.WriteLine("If you want to add more employee details press Y if not press N");
-                choice = Convert.ToChar(Console.ReadLine());
-                if (choice != 'Y' && choice != 'N')
-                    Console.WriteLine("Press Y or N");
-            }
+                Department department = new Department();
 
+                while (department != Department.Software && department != Department.Sales && department != Department.Design && department != Department.Administration)
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter Employee Department:(Software/Sales/Design/Administration)");
+                        string dept = Console.ReadLine();
+
+                        department = (Department)Enum.Parse(typeof(Department), dept);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Enter Department (Software/Sales/Design/Administration)");
+                        continue;
+                    }
+                }
+                EmployeeDetailist.Add(new Employee(Name, Age, gender, department));
+                    Console.WriteLine("If you want to add more employee details press Y if not press N");
+                    choice = Convert.ToChar(Console.ReadLine());
+                    if (choice != 'Y' && choice != 'N')
+                        Console.WriteLine("Press Y or N");
+                }
+            
             return EmployeeDetailist;
         }
 
@@ -168,6 +171,29 @@ namespace TestPractice
 
             return OrderedByNames;
         }
+
+
+        public static Dictionary<Department, List<string>> EmployeeNameWithDepartment(List<Employee> allemployee)
+        {
+            Dictionary<Department,List<string>> DepartmentWiseNames = new Dictionary<Department,List<string>>();
+            List<string> EmployeeNames;
+            foreach (Employee emp in allemployee)
+            {
+                if (DepartmentWiseNames.ContainsKey(emp.Department))
+                {
+                    DepartmentWiseNames[emp.Department].Add(emp.Name);
+                }
+                else
+                {
+                    EmployeeNames = new List<string>();
+
+                    EmployeeNames.Add(emp.Name);
+                    DepartmentWiseNames.Add(emp.Department, EmployeeNames);
+                }
+            }
+            return DepartmentWiseNames;
+        }
+
     }
 }
 
@@ -221,3 +247,18 @@ namespace TestPractice
 //Console.WriteLine(Emp1.Remark(0));
 
 
+//Gender gender = new Gender();
+//while (gender != Gender.Female && gender != Gender.Male)
+//{ 
+//    try
+//    {
+//        Console.WriteLine("Enter Employee Gender:Female / Male");
+//        string genderType = Console.ReadLine();
+//        gender = (Gender)Enum.Parse(typeof(Gender), genderType);
+//    }
+//    catch
+//    {
+//        Console.WriteLine("Enter the gender either Male or Female ");
+//        continue;
+//    }
+//}
